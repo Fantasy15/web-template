@@ -1,0 +1,24 @@
+{
+    "name": "frontend-template",
+    "version": "1.0.0",
+    "description": "frontend template",
+    "main": "main.js",
+    "directories": {
+        "doc": "doc"
+    },
+    "scripts": {
+        "dev": "webpack-dev-server --config build/webpack.dev.config.js",
+        "qa": "webpack --config build/webpack.qa.config.js",
+        "build": "webpack --config build/webpack.prod.config.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Fantasy15/frontend-template.git"
+    },
+    "author": "Fe3o4",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Fantasy15/frontend-template/issues"
+    },
+    "homepage": "https://github.com/Fantasy15/frontend-template#readme"
+}
