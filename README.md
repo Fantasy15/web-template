@@ -1,4 +1,4 @@
-## frontend-template 前端模板项目
+## web-template 前端模板项目
 
 #### 项目简介
 
