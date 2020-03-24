@@ -1,0 +1,17 @@
+<template>
+    <div class="tab">
+        <router-link :to="{name: 'index'}">index</router-link>
+        <router-link :to="{name: 'about'}">home</router-link>
+        <router-view />
+    </div>
+</template>
+<script>
+
+export default {
+    name: 'app',
+}
+</script>
+
+<style lang="less">
+@import './assets/style/index.less';
+</style>
