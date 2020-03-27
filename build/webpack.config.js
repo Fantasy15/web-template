@@ -6,44 +6,89 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const IconFontPlugin = require('icon-font-loader').Plugin;
 
-module.exports = {
-    context: path.resolve(__dirname, '../'),
-    entry: {
-        'index': './src/index.js',
-    },
-    output: {
-        publicPath: '/',
-        path: path.resolve(`dist`),
-        filename: `js/bundle.js`
-    },
-    module: {
-        rules: [
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-            },
-            {
-                test: /\.less$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'less-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: [require('autoprefixer')]
+module.exports = (env) => {
+
+    let isDev = env === 'dev';
+
+    return {
+        context: path.resolve(__dirname, '../'),
+        entry: {
+            'index': './src/index.js',
+        },
+        output: {
+            publicPath: '/',
+            path: path.resolve(`dist`),
+            filename: `js/bundle.${isDev ? '' : '.[chunkhash:8]'}.js`
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.vue$/,
+                    loader: 'vue-loader',
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                        'css-loader',
+                        'icon-font-loader',
+                    ]
+                },
+                {
+                    test: /\.less$/,
+                    use: [
+                        isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                        'css-loader',
+                        'icon-font-loader',
+                        'less-loader',
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: [require('autoprefixer')]
+                            }
                         }
+                    ]
+                },
+                {
+                    test: /\.(jpeg|jpg|png|gif|woff|ttf)$/,
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8192,
+                        name: `images/[name].${isDev ? '' : '.[hash:8]'}.[ext]`,
                     }
-                ]
+                }
+            ]
+        },
+        plugins: [
+            new IconFontPlugin(),
+            new VueLoaderPlugin(),
+            new HtmlWebPackPlugin({
+                filename: `./index.html`,
+                template: path.resolve(`./public/index.html`),
+            }),
+            new MiniCssExtractPlugin({
+                filename: `css/${isDev ? '' : '.[hash:8]'}.css`,
+                chunkFilename: `css/[name]${isDev ? '' : '.[hash:8]'}.css`
+            })
+        ],
+        resolve: {
+            // 配置别名，在项目中可缩减引用路径，大写防止混淆
+            alias: {
+                Assets: path.resolve(`src/assets`),
+                Component: path.resolve(`src/component`),
+                Http: path.resolve(`src/http`)
+            }
+        },
+        optimization: {
+            splitChunks: {
+                'chunks': 'all'
             },
-        ]
-    },
-    plugins: [
-        new VueLoaderPlugin(),
-        new HtmlWebPackPlugin({
-            filename: `./index.html`,
-            template: path.resolve(`./public/index.html`),
-        }),
-    ]
+        },
+        performance: {
+            hints: false
+        }
+    }
 }

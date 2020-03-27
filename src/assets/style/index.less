@@ -7,4 +7,24 @@ body {
         box-sizing: border-box;
         font-family: "PingFang SC", "Microsoft YaHei", "Droid Sans", Roboto, "Helvetica Neue", Helvetica, STHeiTi, sans-serif, "黑体";
     }
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+}
+
+.text-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    margin: 0;
+    padding: 0;
+    border: none;
 }
