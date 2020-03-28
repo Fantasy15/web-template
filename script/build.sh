@@ -10,7 +10,10 @@ export PATH=$NODEJS_BIN_LATEST:$PATH
 echo "node: $(node -v)"
 echo "npm: v$(npm -v)"
 
-if [-d $BASE_DIR/output ]; then rm -rf $BASE_DIR/output; fi
+if [$BASE_DIR/output ]
+then
+    rm -rf $BASE_DIR/output
+fi
 
 npm install
 
