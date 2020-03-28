@@ -10,7 +10,7 @@ export PATH=$NODEJS_BIN_LATEST:$PATH
 echo "node: $(node -v)"
 echo "npm: v$(npm -v)"
 
-if [$BASE_DIR/output ]
+if [-d $BASE_DIR/output ]
 then
     rm -rf $BASE_DIR/output
 fi
