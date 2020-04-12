@@ -6,11 +6,13 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = () => {
     return merge(baseConfig('test'), {
         mode: 'production',
         plugins: [
+            new CleanWebpackPlugin(),
             new webpack.DefinePlugin({
                 baseData: JSON.stringify(require('../src/plugin/baseData/baseData.online'))
             })

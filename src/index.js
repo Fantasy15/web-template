@@ -11,6 +11,7 @@ import store from './store';
 import plugin from './plugin';
 Vue.use(plugin)
 
+
 new Vue({
     router,
     store,

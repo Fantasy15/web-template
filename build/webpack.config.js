@@ -8,6 +8,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const IconFontPlugin = require('icon-font-loader').Plugin;
+const babelConfig = require('./babel.config');
 
 module.exports = (env) => {
 
@@ -16,7 +17,10 @@ module.exports = (env) => {
     return {
         context: path.resolve(__dirname, '../'),
         entry: {
-            'index': './src/index.js',
+            'index': [
+                'babel-polyfill',
+                './src/index.js'
+            ],
         },
         output: {
             publicPath: '/',
@@ -25,6 +29,14 @@ module.exports = (env) => {
         },
         module: {
             rules: [
+                {
+                    test: /\.m?js$/,
+                    exclude: /(node_modules|bower_components)/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: babelConfig
+                    }
+                },
                 {
                     test: /\.vue$/,
                     loader: 'vue-loader',
