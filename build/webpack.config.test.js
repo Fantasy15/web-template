@@ -17,5 +17,8 @@ module.exports = () => {
                 baseData: JSON.stringify(require('../src/plugin/baseData/baseData.online'))
             })
         ],
+        performance: {
+            hints: 'warning'
+        }
     })
 }

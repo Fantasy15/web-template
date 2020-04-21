@@ -9,6 +9,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const IconFontPlugin = require('icon-font-loader').Plugin;
 const babelConfig = require('./babel.config');
+const WebpackBar = require('webpackbar');
 
 module.exports = (env) => {
 
@@ -84,7 +85,8 @@ module.exports = (env) => {
             new MiniCssExtractPlugin({
                 filename: `css/${isDev ? '' : '.[hash:8]'}.css`,
                 chunkFilename: `css/[name]${isDev ? '' : '.[hash:8]'}.css`
-            })
+            }),
+            new WebpackBar()
         ],
         resolve: {
             // 配置别名，在项目中可缩减引用路径，大写防止混淆
@@ -99,8 +101,10 @@ module.exports = (env) => {
                 'chunks': 'all'
             },
         },
-        performance: {
-            hints: false
+        stats: {
+            children: false,
+            modules: false
         }
+
     }
 }

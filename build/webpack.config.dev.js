@@ -36,6 +36,9 @@ module.exports = () => {
                     xfwd: true
                 }
             ]
+        },
+        performance: {
+            hints: false
         }
     });
 };
