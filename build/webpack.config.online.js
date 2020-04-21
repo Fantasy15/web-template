@@ -6,10 +6,11 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config');
+const WebpackBar = require('webpackbar');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = () => {
-    return merge(baseConfig('online'), {
+    return merge(baseConfig(env), {
         mode: 'production',
         plugins: [
             new CleanWebpackPlugin(),
@@ -17,5 +18,8 @@ module.exports = () => {
                 baseData: JSON.stringify(require('../src/plugin/baseData/baseData.online'))
             })
         ],
+        performance: {
+            hints: 'warning'
+        }
     })
 }
