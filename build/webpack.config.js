@@ -86,9 +86,7 @@ module.exports = (env) => {
                 filename: `css/${isDev ? '' : '.[hash:8]'}.css`,
                 chunkFilename: `css/[name]${isDev ? '' : '.[hash:8]'}.css`
             }),
-            new WebpackBar({
-                name: `webpack env:${env}`
-            })
+            new WebpackBar()
         ],
         resolve: {
             // 配置别名，在项目中可缩减引用路径，大写防止混淆
@@ -107,5 +105,6 @@ module.exports = (env) => {
             children: false,
             modules: false
         }
+
     }
 }
