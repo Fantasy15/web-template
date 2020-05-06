@@ -7,7 +7,6 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const IconFontPlugin = require('icon-font-loader').Plugin;
 const babelConfig = require('./babel.config');
 const WebpackBar = require('webpackbar');
 
@@ -55,7 +54,6 @@ module.exports = (env) => {
                     use: [
                         isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                         'css-loader',
-                        'icon-font-loader',
                         'less-loader',
                         {
                             loader: 'postcss-loader',
@@ -64,6 +62,12 @@ module.exports = (env) => {
                             }
                         }
                     ]
+                },
+                {
+                    test: /\.svg$/,
+                    use: [{
+                        loader: 'svg-sprite-loader',
+                    }],
                 },
                 {
                     test: /\.(jpeg|jpg|png|gif|woff|ttf)$/,
@@ -76,7 +80,6 @@ module.exports = (env) => {
             ]
         },
         plugins: [
-            new IconFontPlugin(),
             new VueLoaderPlugin(),
             new HtmlWebPackPlugin({
                 filename: `./index.html`,

@@ -21,6 +21,7 @@ module.exports = () => {
         devServer: {
             contentBase: path.resolve('./'),
             port: 8080,
+            open: true,
             proxy: [
                 {
                     target: 'http://dev.qq.com:8888',

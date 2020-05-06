@@ -32,8 +32,3 @@ master 分支基于 vue 生态
 webpack + es6 + vue + vue-router + vuex + 一些常见的 util + 持续集成
 
 react-version 分支基于 react 生态
-
-#
-
-#### react-version 为什么不用 redux
-因为 redux 概念多，写出来的代码比较恶心，导致开发效率低。
