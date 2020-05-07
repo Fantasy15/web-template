@@ -11,6 +11,7 @@ import Index from '../views/index/index.vue';
 import About from '../views/About/index.vue';
 
 export default new Router({
+    mode: 'history',
     routes: [
         {
             path: '/',

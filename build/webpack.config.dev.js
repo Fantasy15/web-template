@@ -22,6 +22,7 @@ module.exports = () => {
             contentBase: path.resolve('./'),
             port: 8080,
             open: true,
+            historyApiFallback: true,
             proxy: [
                 {
                     target: 'http://dev.qq.com:8888',

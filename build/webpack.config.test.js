@@ -6,19 +6,18 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config');
-const WebpackBar = require('webpackbar');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
-const env = 'test';
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = () => {
-    return merge(baseConfig(env), {
+    return merge(baseConfig('test'), {
         mode: 'production',
         plugins: [
+            new BundleAnalyzerPlugin(),
             new CleanWebpackPlugin(),
             new webpack.DefinePlugin({
                 baseData: JSON.stringify(require('../src/plugin/baseData/baseData.online'))
-            })
+            }),
         ],
         performance: {
             hints: 'warning'
