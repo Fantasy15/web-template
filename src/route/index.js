@@ -5,10 +5,10 @@
 
 import Vue from 'vue';
 import Router from 'vue-router';
-Vue.use(Router)
+Vue.use(Router);
 
-import Index from '../views/index/index.vue';
-import About from '../views/About/index.vue';
+const Index = () => import(/* webpackChunkName: "home" */ '../views/index/index.vue');
+const About = () => import(/* webpackChunkName: "about" */ '../views/About/index.vue');
 
 export default new Router({
     mode: 'history',

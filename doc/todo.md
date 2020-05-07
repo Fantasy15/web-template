@@ -1,5 +1,4 @@
 ### Todo list
-- add route lazylad && change to history mode
 - add image into assets
 - optimize index.less
 - optimize webpack config
