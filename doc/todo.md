@@ -1,4 +1,5 @@
 ### Todo list
+- 按需加载core.js
 - add react version branch
 - optimize index.less
 
