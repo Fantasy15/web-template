@@ -25,7 +25,7 @@ module.exports = (env) => {
         output: {
             publicPath: '/',
             path: path.resolve(`dist`),
-            filename: `js/bundle.${isDev ? '' : '.[chunkhash:8]'}.js`
+            filename: `js/[name].${isDev ? '' : '[chunkhash:8]'}.js`
         },
         module: {
             rules: [
