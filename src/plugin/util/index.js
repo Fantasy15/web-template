@@ -4,7 +4,9 @@
  */
 
 const debounce = require('lodash/debounce');
+import time from '../../util/time';
 
 export default {
-    debounce
+    debounce,
+    time
 }

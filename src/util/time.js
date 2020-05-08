@@ -4,9 +4,9 @@
  */
 
 // 一些常量
-const oneMin = 60 * 1000;
-const oneHour = 60 * 60 * 1000;
-const oneDay = 24 * 60 * 60 * 1000;
+export const oneMin = 60 * 1000;
+export const oneHour = 60 * 60 * 1000;
+export const oneDay = 24 * 60 * 60 * 1000;
 
 // YY-MM-DD HH:MM
 export function getFullTime(stamp) {
@@ -25,13 +25,21 @@ export function getFullTime(stamp) {
 
 }
 
-// YY年MM月DD日
-export function getTime(stamp) {
+// YY年MM月DD日, 支持分支符
+export function getTime(stamp, separator) {
     if (!stamp) {
         return '-';
     }
     const target = new Date(stamp);
-    return `${target.getFullYear()}年${target.getMonth() + 1}月${target.getDate()}日`;
+    const year = `${target.getFullYear()}${separator ? separator : '年'}`;
+    const month = separator
+                    ? `${zeroize(target.getMonth() + 1)}${separator}`
+                    : `${target.getMonth() + 1}月`;
+    const day = separator
+                    ? `${zeroize(target.getDate())}`
+                    : `${target.getDate()}日`;
+
+    return `${year}${month}${day}`;
 }
 
 // 今天/昨天/前天
@@ -92,3 +100,15 @@ function zeroize(value) {
         ? '0' + value
         : value;
 }
+
+const api = {
+    oneMin,
+    oneHour,
+    oneDay,
+    getTime,
+    getFullTime,
+    getHourTime,
+    getDayTime
+}
+
+export default api;

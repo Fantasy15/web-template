@@ -4,8 +4,10 @@
  */
 import loadScript from './loadScript';
 import setFontSize from './setFontSize';
+import time from './time';
 
 export default {
     loadScript,
-    setFontSize
+    setFontSize,
+    time
 }

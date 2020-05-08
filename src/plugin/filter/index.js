@@ -2,11 +2,8 @@
  * @file vue过滤器入口文件
  */
 
-import {getTime, getFullTime, getHourTime, getDayTime} from './time';
+import time from '../../util/time';
 
 export default{
-    getTime,
-    getFullTime,
-    getHourTime,
-    getDayTime    
+    time  
 };
