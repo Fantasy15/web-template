@@ -30,8 +30,7 @@ module.exports = (env) => {
         module: {
             rules: [
                 {
-                    test: /\.m?js$/,
-                    exclude: /(node_modules|bower_components)/,
+                    test: /\.js$/,
                     use: {
                         loader: 'babel-loader',
                         options: babelConfig
@@ -86,8 +85,7 @@ module.exports = (env) => {
                 template: path.resolve(`./public/index.html`),
             }),
             new MiniCssExtractPlugin({
-                filename: `css/${isDev ? '' : '.[hash:8]'}.css`,
-                chunkFilename: `css/[name]${isDev ? '' : '.[hash:8]'}.css`
+                filename: `css/[name]${isDev ? '' : '.[hash:8]'}.css`,
             }),
             new WebpackBar()
         ],
