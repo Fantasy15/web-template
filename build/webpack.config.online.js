@@ -14,10 +14,12 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = () => {
     return merge(baseConfig('prod'), {
         mode: 'production',
-        minimizer: [
-            new OptimizeCSSAssetsPlugin({}),
-            new TerserPlugin()
-        ],
+        optimization: {
+            minimizer: [
+                new OptimizeCSSAssetsPlugin({}),
+                new TerserPlugin()
+            ],
+        },
         plugins: [
             new BundleAnalyzerPlugin(),
             new CleanWebpackPlugin(),
