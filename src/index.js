@@ -1,21 +1,17 @@
 /**
  * @file index.js
- * @description 入口文件
+ * @description 项目初始化入口
  */
 
-import Vue from 'vue';
-import App from './app.vue';
-import router from './route';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import store from './store';
+import App from './app';
 
-import plugin from './plugin';
-Vue.use(plugin)
-
-// import all svgs under ./assets/svg
+import './assets/style/index.less';
 require('./assets/svg');
 
-new Vue({
-    router,
-    store,
-    render: h => h(App)
-}).$mount('#app');
+ReactDOM.render(
+    <App store={store} />,
+    document.getElementById('app')
+);

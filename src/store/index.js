@@ -1,16 +1,14 @@
 /**
  * @file index.js
- * @description 状态入口
+ * @description store 入口
  */
 
-import Vue from 'vue';
-import Vuex from 'vuex';
-Vue.use(Vuex);
+import UserInfo from './modules/userInfo';
 
-import userInfo from './modules/userInfo';
-
-export default new Vuex.Store({
-    modules: {
-        userInfo
+class RootStore {
+    constructor() {
+        this.userStore = new UserInfo(this);
     }
-});
+}
+
+export default new RootStore();

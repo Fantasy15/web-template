@@ -22,7 +22,7 @@ module.exports = () => {
             new BundleAnalyzerPlugin(),
             new CleanWebpackPlugin(),
             new webpack.DefinePlugin({
-                baseData: JSON.stringify(require('../src/plugin/baseData/baseData.online'))
+                baseData: JSON.stringify(require('../src/baseData/baseData.online'))
             }),
         ],
         performance: {

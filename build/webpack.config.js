@@ -5,7 +5,6 @@
 
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const babelConfig = require('./babel.config');
 const WebpackBar = require('webpackbar');
@@ -25,7 +24,7 @@ module.exports = (env) => {
         output: {
             publicPath: '/',
             path: path.resolve(`dist`),
-            filename: `js/[name].${isDev ? '' : '[chunkhash:8]'}.js`
+            filename: `js/[name]${isDev ? '' : '[chunkhash:8]'}.js`
         },
         module: {
             rules: [
@@ -35,10 +34,6 @@ module.exports = (env) => {
                         loader: 'babel-loader',
                         options: babelConfig
                     }
-                },
-                {
-                    test: /\.vue$/,
-                    loader: 'vue-loader',
                 },
                 {
                     test: /\.css$/,
@@ -79,7 +74,6 @@ module.exports = (env) => {
             ]
         },
         plugins: [
-            new VueLoaderPlugin(),
             new HtmlWebPackPlugin({
                 filename: `./index.html`,
                 template: path.resolve(`./public/index.html`),
