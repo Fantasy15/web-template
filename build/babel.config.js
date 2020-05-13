@@ -4,6 +4,16 @@
  */
 
 module.exports = {
-    presets: ['@babel/preset-env'],
+    presets: [
+        [
+            '@babel/preset-env',
+            {
+                useBuiltIns: "entry",
+                targets: {
+                    ie: 9
+                }
+            }
+        ]
+    ],
     plugins: []
 }
