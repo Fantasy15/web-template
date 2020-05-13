@@ -1,5 +1,5 @@
 ### Todo list
-- 按需加载core.js
+- babel升级
 - add react version branch
 - optimize index.less
 
