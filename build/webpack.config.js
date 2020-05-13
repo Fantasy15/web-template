@@ -17,7 +17,6 @@ module.exports = (env) => {
         context: path.resolve(__dirname, '../'),
         entry: {
             'index': [
-                'babel-polyfill',
                 './src/index.js'
             ],
         },
