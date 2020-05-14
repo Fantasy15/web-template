@@ -43,8 +43,7 @@ module.exports = (env) => {
                     test: /\.css$/,
                     use: [
                         isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                        'css-loader',
-                        'icon-font-loader',
+                        'css-loader'
                     ]
                 },
                 {
@@ -52,13 +51,13 @@ module.exports = (env) => {
                     use: [
                         isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                         'css-loader',
-                        'less-loader',
                         {
                             loader: 'postcss-loader',
                             options: {
                                 plugins: [require('autoprefixer')]
                             }
-                        }
+                        },
+                        'less-loader',
                     ]
                 },
                 {
