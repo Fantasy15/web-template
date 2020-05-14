@@ -20,7 +20,6 @@ module.exports = () => {
         ],
         devServer: {
             contentBase: path.resolve('./'),
-            port: 8080,
             open: true,
             historyApiFallback: true,
             proxy: [
