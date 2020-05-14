@@ -39,7 +39,6 @@ module.exports = (env) => {
                     use: [
                         isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                         'css-loader',
-                        'icon-font-loader',
                     ]
                 },
                 {
@@ -47,13 +46,13 @@ module.exports = (env) => {
                     use: [
                         isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                         'css-loader',
-                        'less-loader',
                         {
                             loader: 'postcss-loader',
                             options: {
                                 plugins: [require('autoprefixer')]
                             }
-                        }
+                        },
+                        'less-loader',
                     ]
                 },
                 {
