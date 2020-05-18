@@ -42,14 +42,14 @@ module.exports = (env) => {
                 {
                     test: /\.css$/,
                     use: [
-                        isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                        MiniCssExtractPlugin.loader,
                         'css-loader'
                     ]
                 },
                 {
                     test: /\.less$/,
                     use: [
-                        isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                        MiniCssExtractPlugin.loader,
                         'css-loader',
                         {
                             loader: 'postcss-loader',
