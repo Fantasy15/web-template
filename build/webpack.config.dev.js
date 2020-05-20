@@ -21,6 +21,7 @@ module.exports = () => {
         devServer: {
             contentBase: path.resolve('./'),
             open: true,
+            hot: true,
             historyApiFallback: true,
             proxy: [
                 {
