@@ -15,7 +15,7 @@ module.exports = () => {
         devtool: 'inline-source-map',
         plugins: [
             new webpack.DefinePlugin({
-                baseData: JSON.stringify(require('../src/baseData/baseData.test'))
+                baseData: JSON.stringify(require('../src/baseData/baseData.dev'))
             })
         ],
         devServer: {

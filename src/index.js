@@ -13,6 +13,9 @@ import App from './app';
 import './assets/style/index.less';
 require('./assets/svg');
 
+console.log(baseData.host);
+console.log(baseData.hmLink);
+
 ReactDOM.render(
     <App store={store} />,
     document.getElementById('app')
