@@ -4,10 +4,12 @@
  */
 
 import UserInfo from './modules/userInfo';
+import Main from './modules/main';
 
 class RootStore {
     constructor() {
         this.userStore = new UserInfo(this);
+        this.mainStore = new Main(this);
     }
 }
 
