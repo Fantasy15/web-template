@@ -7,13 +7,13 @@ import '@babel/polyfill';
  
 import React from 'react';
 import ReactDOM from 'react-dom';
-import store from './store';
+// import store from './store';
 import App from './app';
 
 import './assets/style/index.less';
 require('./assets/svg');
 
 ReactDOM.render(
-    <App store={store} />,
+    <App />,
     document.getElementById('app')
 );

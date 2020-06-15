@@ -3,21 +3,22 @@
  * @description index component
  */
 
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import {observer, inject}from 'mobx-react';
+import {useStores} from '../../store';
 import './index.less';
 
-@inject('userStore') @observer
-class Index extends Component {
-    render() {
-        const {userInfo} = this.props.userStore;
-        return (
-            <div className="index">
-                this is index page,
-                and a mobx userInfo state {userInfo.name}
-            </div>
-        );
-    }
-}
-
-export default Index;
+export const Index = observer(() => {
+    const {count, plusCount} = useStores().mainStore;
+    useEffect(() => {
+        console.log('render');
+    })
+    return (
+        <div className="index">
+            this is index page,
+            and a mobx mainStore state {count}
+            <br/>
+            <button onClick={plusCount}>click</button> to plus this count;
+        </div>
+    );
+})
