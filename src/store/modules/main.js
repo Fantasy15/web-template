@@ -17,29 +17,3 @@ export default class Main {
         this.count ++;
     }
 }
-
-// export const Main = ((rootStore) => ({
-//     rootStore: rootStore,
-//     count: 1,
-//     plusCount() {
-//         Main.count ++;
-//     }
-// }))
-
-// export const Main = observable({
-//     // rootStore: rootStore,
-//     count: 1,
-//     plusCount() {
-//         Main.count ++;
-//     }
-// })
-
-// export function Main(rootStore) {
-//     return observable({
-//         rootStore: rootStore,
-//         count: 1,
-//         plusCount() {
-//             Main.count ++;
-//         }
-//     })
-// }
