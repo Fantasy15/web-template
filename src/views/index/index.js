@@ -8,7 +8,7 @@ import {observer, inject}from 'mobx-react';
 import {useStores} from '../../store';
 import './index.less';
 
-export const Index = observer(() => {
+export default observer(() => {
     const {count, plusCount} = useStores().mainStore;
     useEffect(() => {
         console.log('render');

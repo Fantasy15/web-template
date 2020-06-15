@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch, Link} from 'react-router-dom';
 
-import {Index} from './views/index';
+import Index from './views/index';
 import About from './views/about';
 
 class App extends Component {
