@@ -3,6 +3,7 @@
  * @description store 入口
  */
 
+import React from 'react';
 import UserInfo from './modules/userInfo';
 import Main from './modules/main';
 
@@ -13,4 +14,5 @@ class RootStore {
     }
 }
 
-export default new RootStore();
+export const store = new RootStore();
+export const StoreContext = React.createContext({});
