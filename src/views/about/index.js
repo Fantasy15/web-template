@@ -6,10 +6,8 @@
 import React, {Component} from 'react';
 import './index.less';
 
-class About extends Component {
-    render() {
-        return <div className="about">this is about page</div>
-    }
-}
+const About = () => (
+    <div className="about">this is about page</div>
+)
 
-export default About
+export default About;
