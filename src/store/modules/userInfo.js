@@ -3,22 +3,21 @@
  * @description 用户信息store
  */
 
-import {observable, computed, action} from 'mobx';
 import http from 'Http';
-export default class UserInfo {
-    constructor(rootStore) {
-        this.rootStore = rootStore;
-    }
+import { useLocalStore } from 'mobx-react';
 
-    @observable userInfo = {
-        name: '张三'
-    };
-
-    @action.bound getUserInfo() {
+const UserInfo = () => useLocalStore(() => ({
+    name: '张三',
+    get fullName() {
+        return this.name + 'haha';
+    },
+    getUserInfo () {
         return http.getUserInfo().then(result => {
             if (result) {
-                this.userInfo = result;
+                this.name = result;
             }
         });
-    }
-}
+   }
+}))
+
+export default UserInfo;

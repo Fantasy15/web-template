@@ -3,17 +3,14 @@
  * @description 入口store
  */
 
-import {observable, action} from 'mobx';
-import {useLocalStore} from 'mobx-react';
+ import {useLocalStore} from 'mobx-react';
 
-export default class Main {
-    constructor(rootStore) {
-        this.rootStore = rootStore;
-    }
-
-    @observable count = 1;
-
-    @action.bound plusCount() {
+const Main = () => useLocalStore(() => ({
+    count: 1,
+    plusCount() {
+        console.log(this);
         this.count ++;
     }
-}
+}))
+
+export default Main;

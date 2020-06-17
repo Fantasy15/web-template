@@ -3,13 +3,13 @@
  * @description index component
  */
 
-import React, {useEffect} from 'react';
-import {observer, inject}from 'mobx-react';
-import {useStores} from '../../store';
+import React, {useEffect, useContext} from 'react';
+import {observer}from 'mobx-react';
+import {StoresContext} from 'Src/store';
 import './index.less';
 
 export default observer(() => {
-    const {count, plusCount} = useStores().mainStore;
+    const {count, plusCount} = useContext(StoresContext).mainStore;
     useEffect(() => {
         console.log('render');
     })
