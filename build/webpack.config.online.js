@@ -11,6 +11,9 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
+const args = process.argv;
+const ifAnalyze = args.length >= 5 && args[4] === '--analyze';
+
 module.exports = () => {
     return merge(baseConfig('prod'), {
         mode: 'production',
@@ -21,7 +24,7 @@ module.exports = () => {
             ]
         },
         plugins: [
-            new BundleAnalyzerPlugin(),
+            ifAnalyze ? new BundleAnalyzerPlugin() : function () { },
             new CleanWebpackPlugin(),
             new webpack.DefinePlugin({
                 baseData: JSON.stringify(require('../src/plugin/baseData/baseData.online'))

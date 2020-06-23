@@ -7,7 +7,6 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
@@ -21,7 +20,6 @@ module.exports = () => {
             ],
         },
         plugins: [
-            new BundleAnalyzerPlugin(),
             new CleanWebpackPlugin(),
             new webpack.DefinePlugin({
                 baseData: JSON.stringify(require('../src/plugin/baseData/baseData.test'))
