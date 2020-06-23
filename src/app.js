@@ -6,9 +6,7 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {StoreContext, store} from './store';
-
-import Index from './views/index';
-import About from './views/about';
+import routeConfig from './route';
 
 class App extends Component {
     render() {
@@ -25,12 +23,14 @@ class App extends Component {
                             </li>
                         </ul>
                         <Switch>
-                            <Route exact path="/">
-                                <Index />
-                            </Route>
-                            <Route path="/about">
-                                <About />
-                            </Route>
+                            {routeConfig.map(({key, path, component}) => (
+                                <Route
+                                    exact
+                                    key={key}
+                                    path={path}
+                                    component={component}
+                                />
+                            ))}
                         </Switch>
                     </div>
                 </Router>
