@@ -17,9 +17,7 @@ module.exports = (env) => {
     return {
         context: path.resolve(__dirname, '../'),
         entry: {
-            'index': [
-                './src/index.js'
-            ],
+            index: './src/index.js',
         },
         output: {
             publicPath: '/',
@@ -97,7 +95,14 @@ module.exports = (env) => {
         },
         optimization: {
             splitChunks: {
-                'chunks': 'all'
+                chunks: 'all',
+                cacheGroups: {
+                    vuelib: {
+                        test: /[\\/]node_modules[\\/](vue|vue-router|vuex)[\\/]/,
+                        name: 'vuelib',
+                        chunks: 'all',
+                    }
+                }
             },
         },
         stats: {
