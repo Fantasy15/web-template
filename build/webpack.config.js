@@ -17,12 +17,6 @@ module.exports = (env) => {
         context: path.resolve(__dirname, '../'),
         entry: {
             index: './src/index.js',
-            reactlib: [
-                'react',
-                'react-dom',
-                'mobx',
-                'mobx-react'
-            ]
         },
         output: {
             publicPath: '/',
@@ -96,7 +90,14 @@ module.exports = (env) => {
         },
         optimization: {
             splitChunks: {
-                'chunks': 'all'
+                chunks: 'all',
+                cacheGroups: {
+                    lib: {
+                        test: /[\\/]node_modules[\\/](react|react-dom|react-router|mobx)[\\/]/,
+                        name: 'lib',
+                        chunks: 'all',
+                    }
+                }
             },
         },
         stats: {
