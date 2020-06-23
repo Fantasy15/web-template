@@ -16,9 +16,13 @@ module.exports = (env) => {
     return {
         context: path.resolve(__dirname, '../'),
         entry: {
-            'index': [
-                './src/index.js'
-            ],
+            index: './src/index.js',
+            reactlib: [
+                'react',
+                'react-dom',
+                'mobx',
+                'mobx-react'
+            ]
         },
         output: {
             publicPath: '/',
@@ -66,7 +70,7 @@ module.exports = (env) => {
                     loader: 'url-loader',
                     options: {
                         limit: 8192,
-                        name: `images/[name].${isDev ? '' : '.[hash:8]'}.[ext]`,
+                        name: `images/[name].${isDev ? '' : '.[chunkhash:8]'}.[ext]`,
                     }
                 }
             ]
