@@ -3,23 +3,21 @@
  * @description 路由入口文件
  */
 
-import Index from '../views/index';
-import About from '../views/about';
-import loadable from 'react-loadable'
+import loadable from '@loadable/component'
 
 export default [
     {
         key: 'index',
         path: '/',
-        component: loadable({
-            loader: () => import('../views/index'),
-        })
+        component: loadable(
+            () => import('../views/index'),
+        )
     },
     {
         key: 'about',
         path: '/about',
-        component: loadable({
-            loader: () => import('../views/about'),
-        })
+        component: loadable(
+            () => import('../views/about'),
+        )
     }
 ]
