@@ -9,7 +9,8 @@
     "scripts": {
         "dev": "webpack-dev-server --config build/webpack.config.dev.js",
         "build-test": "webpack --config build/webpack.config.test.js",
-        "build-online": "webpack --config build/webpack.config.online.js",
+        "build": "webpack --config build/webpack.config.online.js",
+        "analyze": "webpack --config build/webpack.config.online.js --analyze",
         "build-sh": "sh script/build.sh"
     },
     "repository": {
@@ -25,6 +26,7 @@
     "dependencies": {
         "@babel/plugin-transform-react-jsx": "^7.9.4",
         "@babel/polyfill": "^7.8.7",
+        "@loadable/component": "^5.12.0",
         "autoprefixer": "^9.7.5",
         "axios": "^0.19.2",
         "css-loader": "^3.4.2",

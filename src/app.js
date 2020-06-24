@@ -6,9 +6,8 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {store, StoresContext} from './store';
+import routeConfig from './route';
 
-import Index from './views/index';
-import About from './views/about';
 
 const App = () => {
     return (
@@ -24,12 +23,14 @@ const App = () => {
                         </li>
                     </ul>
                     <Switch>
-                        <Route exact path="/">
-                            <Index />
-                        </Route>
-                        <Route path="/about">
-                            <About />
-                        </Route>
+                        {routeConfig.map(({key, path, component}) => (
+                            <Route
+                                exact
+                                key={key}
+                                path={path}
+                                component={component}
+                            />
+                        ))}
                     </Switch>
                 </div>
             </Router>
