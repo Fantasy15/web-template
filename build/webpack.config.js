@@ -16,14 +16,12 @@ module.exports = (env) => {
     return {
         context: path.resolve(__dirname, '../'),
         entry: {
-            'index': [
-                './src/index.js'
-            ],
+            index: './src/index.js',
         },
         output: {
             publicPath: '/',
             path: path.resolve(`dist`),
-            filename: `js/[name]${isDev ? '' : '[chunkhash:8]'}.js`
+            filename: `js/[name]${isDev ? '' : '.[chunkhash:8]'}.js`
         },
         module: {
             rules: [
@@ -66,7 +64,7 @@ module.exports = (env) => {
                     loader: 'url-loader',
                     options: {
                         limit: 8192,
-                        name: `images/[name].${isDev ? '' : '.[hash:8]'}.[ext]`,
+                        name: `images/[name].${isDev ? '' : '.[chunkhash:8]'}.[ext]`,
                     }
                 }
             ]
@@ -77,13 +75,14 @@ module.exports = (env) => {
                 template: path.resolve(`./public/index.html`),
             }),
             new MiniCssExtractPlugin({
-                filename: `css/[name]${isDev ? '' : '.[hash:8]'}.css`,
+                filename: `css/[name]${isDev ? '' : '.[chunkhash:8]'}.css`,
             }),
             new WebpackBar()
         ],
         resolve: {
             // 配置别名，在项目中可缩减引用路径，大写防止混淆
             alias: {
+                Src: path.resolve(`src`),
                 Assets: path.resolve(`src/assets`),
                 Component: path.resolve(`src/component`),
                 Http: path.resolve(`src/http`)
@@ -91,7 +90,14 @@ module.exports = (env) => {
         },
         optimization: {
             splitChunks: {
-                'chunks': 'all'
+                chunks: 'all',
+                cacheGroups: {
+                    lib: {
+                        test: /[\\/]node_modules[\\/](react|react-dom|react-router|mobx)[\\/]/,
+                        name: 'lib',
+                        chunks: 'all',
+                    }
+                }
             },
         },
         stats: {

@@ -5,35 +5,37 @@
 
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import {store, StoresContext} from './store';
+import routeConfig from './route';
 
-import Index from './views/index';
-import About from './views/about';
 
-class App extends Component {
-    render() {
-        return (
-                <Router>
-                    <div>
-                        <ul>
-                            <li>
-                                <Link to="/">index</Link>
-                            </li>
-                            <li>
-                                <Link to="/about">about</Link>
-                            </li>
-                        </ul>
-                        <Switch>
-                            <Route exact path="/">
-                                <Index />
-                            </Route>
-                            <Route path="/about">
-                                <About />
-                            </Route>
-                        </Switch>
-                    </div>
-                </Router>
-        )
-    }
+const App = () => {
+    return (
+        <StoresContext.Provider value={store()}>
+            <Router>
+                <div>
+                    <ul>
+                        <li>
+                            <Link to="/">index</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">about</Link>
+                        </li>
+                    </ul>
+                    <Switch>
+                        {routeConfig.map(({key, path, component}) => (
+                            <Route
+                                exact
+                                key={key}
+                                path={path}
+                                component={component}
+                            />
+                        ))}
+                    </Switch>
+                </div>
+            </Router>
+        </StoresContext.Provider>
+    )
 }
 
 export default App;
