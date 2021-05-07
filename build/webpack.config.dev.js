@@ -5,7 +5,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.config');
 const WebpackBar = require('webpackbar');
 
