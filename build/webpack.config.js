@@ -22,7 +22,7 @@ module.exports = (env) => {
         output: {
             publicPath: '/',
             path: path.resolve(`dist`),
-            filename: `js/[name].${isDev ? '' : '[chunkhash:8]'}.js`
+            filename: `js/[name]${isDev ? '' : '.[chunkhash:8]'}.js`
         },
         module: {
             rules: [
@@ -52,7 +52,9 @@ module.exports = (env) => {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: [require('autoprefixer')]
+                                postcssOptions: {
+                                    plugins: [require('autoprefixer')]
+                                }
                             }
                         },
                         'less-loader',
