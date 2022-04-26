@@ -1,17 +1,20 @@
 <template>
-    <div>{{msg}}</div>
+    <div>1</div>
 </template>
+
 <script>
-import {mapGetters} from 'vuex';
+// import { mapState } from 'pinia';
+import { userStore } from 'Store/userInfo';
 export default {
     name: 'index',
-    computed: {
-        ...mapGetters('userInfo', [
-            'msg',
-        ]),
-    },
+    // computed: {
+    //     ...mapState(userStore, [
+    //         'count',
+    //     ]),
+    // },
 }
 </script>
+
 <style lang="less" scoped>
 @import './index.less';
 </style>

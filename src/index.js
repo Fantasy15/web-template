@@ -4,21 +4,18 @@
  */
 
 import '@babel/polyfill';
-import Vue from 'vue';
+import { createApp } from 'vue';
+import { router } from './route';
 import App from './app.vue';
-import router from './route';
-import store from './store';
 
-import plugin from './plugin';
-Vue.use(plugin);
+// import plugin from './plugin';
+// Vue.use(plugin);
 
-Vue.config.performance = baseData.env === 'development';
+// Vue.config.performance = baseData.env === 'development';
 
 // import all svgs under ./assets/svg
 require('./assets/svg');
 
-new Vue({
-    router,
-    store,
-    render: h => h(App)
-}).$mount('#app');
+const app = createApp(App)
+        .use(router)
+        .mount('#app')
