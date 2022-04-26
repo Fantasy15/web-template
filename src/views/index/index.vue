@@ -4,7 +4,7 @@
 
 <script>
 // import { mapState } from 'pinia';
-import { userStore } from 'Store/userInfo';
+// import { userStore } from 'Store/userInfo';
 export default {
     name: 'index',
     // computed: {
