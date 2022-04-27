@@ -4,27 +4,26 @@
  */
 
 import util from './util';
-import filter from './filter';
 import component from './component';
+import directive from './directive';
 
-export default function(Vue) {
-    // 添加实例常量
-    (Vue.prototype).baseData = baseData;
+export default function(app) {
+    // 添加全局实例常量
+    app.config.globalProperties.$baseData = baseData;
 
     // 添加全局方法
     for (let key in util) {
-        (Vue.prototype)[key] = util[key];
+        (app.config.globalProperties)[key] = util[key];
     }
 
-    // 注册全局组件
+    // // 注册全局组件
     for (let key in component) {
-        Vue.component(`wiki-${key}`, component[key]);
-    }
-
-    // 注册过滤器
-    for (let key in filter) {
-        Vue.filter(key, filter[key]);
+        app.component(`wiki-${key}`, component[key]);
     }
 
     // 注册指令
+    for (let key in directive) {
+        app.directive(`wiki-${key}`, directive[key]);
+    }
+
 }

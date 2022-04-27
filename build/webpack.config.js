@@ -73,12 +73,7 @@ module.exports = (env) => {
                         limit: 8192,
                         name: `images/[name].${isDev ? '' : '.[chunkhash:8]'}.[ext]`,
                     }
-                },
-                {
-                    test: /\.mjs$/,
-                    include: /node_modules/,
-                    type: 'javascript/auto',
-                },
+                }
             ]
         },
         plugins: [

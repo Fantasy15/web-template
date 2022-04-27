@@ -3,7 +3,7 @@
         <svg>
             <use xlink:href="#twitter"></use>
         </svg>
-        <router-link :to="{name: 'index'}">home</router-link>
+        <router-link :to="{name: 'index'}">home </router-link>
         <router-link :to="{name: 'about'}">about</router-link>
         <router-view />
     </div>

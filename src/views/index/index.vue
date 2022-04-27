@@ -1,17 +1,20 @@
 <template>
-    <div>1</div>
+    <div>
+        {{msg}}
+    </div>
 </template>
 
 <script>
-// import { mapState } from 'pinia';
-// import { userStore } from 'Store/userInfo';
+import { mapState } from 'pinia';
+import { userStore } from 'Store/userInfo';
+
 export default {
     name: 'index',
-    // computed: {
-    //     ...mapState(userStore, [
-    //         'count',
-    //     ]),
-    // },
+    computed: {
+        ...mapState(userStore, [
+            'msg',
+        ]),
+    },
 }
 </script>
 
