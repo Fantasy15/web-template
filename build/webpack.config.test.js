@@ -7,17 +7,28 @@ const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.config');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = () => {
     return merge(baseConfig('test'), {
         mode: 'production',
         optimization: {
+            splitChunks: {
+                name: 'vendors',
+                chunks: 'all',
+                cacheGroups: {
+                    vuelib: {
+                        test: /[\\/]node_modules[\\/](vue|vue-router|vuex)[\\/]/,
+                        name: 'vuelib',
+                        chunks: 'all',
+                    }
+                }
+            },
             minimizer: [
-                new OptimizeCSSAssetsPlugin({}),
+                new CssMinimizerPlugin(),
                 new TerserPlugin()
-            ],
+            ]
         },
         plugins: [
             new CleanWebpackPlugin(),
