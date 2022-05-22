@@ -21,7 +21,7 @@ module.exports = (env) => {
         output: {
             publicPath: '/',
             path: path.resolve(`dist`),
-            filename: `js/[name]${isDev ? '' : '.[chunkhash:8]'}.js`
+            filename: `js/[name]${isDev ? '' : '.[contenthash:8]'}.js`
         },
         module: {
             rules: [
@@ -66,7 +66,7 @@ module.exports = (env) => {
                     loader: 'url-loader',
                     options: {
                         limit: 8192,
-                        name: `images/[name].${isDev ? '' : '.[chunkhash:8]'}.[ext]`,
+                        name: `images/[name].${isDev ? '' : '.[contenthash:8]'}.[ext]`,
                     }
                 }
             ]
@@ -77,7 +77,7 @@ module.exports = (env) => {
                 template: path.resolve(`./public/index.html`),
             }),
             new MiniCssExtractPlugin({
-                filename: `css/[name]${isDev ? '' : '.[chunkhash:8]'}.css`,
+                filename: `css/[name]${isDev ? '' : '.[contenthash:8]'}.css`,
             }),
             new WebpackBar()
         ],

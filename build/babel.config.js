@@ -10,7 +10,8 @@ module.exports = {
                 useBuiltIns: 'entry',
                 targets: { 
                     ie: 9
-                }
+                },
+                corejs: 2
             }
         ], 
         'mobx'
