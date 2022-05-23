@@ -1,8 +1,8 @@
 <template>
     <div class="tab">
-        <svg>
+        <!-- <svg>
             <use xlink:href="bundle.svg#twitter"></use>
-        </svg>
+        </svg> -->
         <router-link :to="{name: 'index'}">home </router-link>
         <router-link :to="{name: 'about'}">about</router-link>
         <router-view />
