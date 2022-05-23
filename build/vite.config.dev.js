@@ -3,25 +3,15 @@
  * @description webpack 开发环境配置文件, 启动了devServer
  */
 
-const path = require('path');
-const webpack = require('webpack');
-const { merge } = require('webpack-merge');
-const baseConfig = require('./webpack.config');
+const baseConfig = require('./vite.config');
 
 module.exports = () => {
-    return merge(baseConfig('dev'), {
-        mode: 'development',
-        devtool: 'inline-source-map',
-        plugins: [
-            new webpack.DefinePlugin({
-                baseData: JSON.stringify(require('../src/plugin/baseData/baseData.dev'))
-            })
-        ],
-        devServer: {
-            contentBase: path.resolve('./'),
+    return Object.assign(baseConfig('dev'), {
+        define: {
+            baseData: JSON.stringify(require('../src/plugin/baseData/baseData.dev'))
+        },
+        server: {
             open: true,
-            hot: true,
-            historyApiFallback: true,
             proxy: [
                 {
                     target: 'http://dev.qq.com:8888',
@@ -39,8 +29,5 @@ module.exports = () => {
                 }
             ]
         },
-        performance: {
-            hints: false
-        }
     });
 };

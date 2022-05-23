@@ -3,7 +3,7 @@
  * @description 组建内函数
  */
 
-const debounce = require('lodash/debounce');
+import debounce from 'lodash/debounce';
 import time from '../../util/time';
 
 export default {
