@@ -5,6 +5,7 @@
 
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const babelConfig = require('./babel.config');
 const WebpackBar = require('webpackbar');
@@ -76,6 +77,10 @@ module.exports = (env) => {
                 filename: `./index.html`,
                 template: path.resolve(`./public/index.html`),
             }),
+            new PreloadWebpackPlugin({
+                rel: 'preload',
+                include: 'initial'
+            }),
             new MiniCssExtractPlugin({
                 filename: `css/[name]${isDev ? '' : '.[contenthash:8]'}.css`,
             }),
@@ -89,18 +94,6 @@ module.exports = (env) => {
                 Component: path.resolve(`src/component`),
                 Http: path.resolve(`src/http`),
             }
-        },
-        optimization: {
-            splitChunks: {
-                chunks: 'all',
-                cacheGroups: {
-                    lib: {
-                        test: /[\\/]node_modules[\\/](react|react-dom|react-router|mobx)[\\/]/,
-                        name: 'lib',
-                        chunks: 'all',
-                    }
-                }
-            },
         },
         stats: {
             children: false,

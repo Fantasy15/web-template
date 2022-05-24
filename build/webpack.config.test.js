@@ -14,8 +14,19 @@ module.exports = () => {
     return merge(baseConfig('test'), {
         mode: 'production',
         optimization: {
+            splitChunks: {
+                name: 'vendors',
+                chunks: 'all',
+                cacheGroups: {
+                    lib: {
+                        test: /[\\/]node_modules[\\/](react|react-dom|react-router|mobx)[\\/]/,
+                        name: 'lib',
+                        chunks: 'all',
+                    }
+                }
+            },
             minimizer: [
-                new CleanWebpackPlugin(),
+                new CssMinimizerPlugin(),
                 new TerserPlugin()
             ],
         },
