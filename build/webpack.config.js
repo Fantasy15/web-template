@@ -5,7 +5,6 @@
 
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const babelConfig = require('./babel.config');
@@ -82,10 +81,6 @@ module.exports = (env) => {
             new HtmlWebPackPlugin({
                 filename: `./index.html`,
                 template: path.resolve(`./public/index.html`),
-            }),
-            new PreloadWebpackPlugin({
-                rel: 'preload',
-                include: 'initial'
             }),
             new MiniCssExtractPlugin({
                 filename: `css/[name]${isDev ? '' : '.[contenthash:8]'}.css`,
