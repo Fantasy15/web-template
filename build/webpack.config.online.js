@@ -7,6 +7,7 @@ const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.config');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
@@ -30,6 +31,14 @@ module.exports = () => {
                 }
             },
             minimizer: [
+                new PreloadWebpackPlugin({
+                    rel: 'preload',
+                    include: {
+                        type: 'initial',
+                        chunks: ['index']
+                    },
+                    fileBlacklist: [/\.css/]
+                }),
                 new CssMinimizerPlugin(),
                 new TerserPlugin()
             ],
