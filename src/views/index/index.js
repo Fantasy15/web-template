@@ -10,9 +10,19 @@ import './index.less';
 
 export default observer(() => {
     const {count, plusCount} = useContext(StoresContext).mainStore;
+
     useEffect(() => {
-        console.log('render');
-    })
+        console.log('Component did mount');
+
+        return () => {
+            console.log('Component will unmount');
+        };
+    }, []);
+
+    useEffect(() => {
+        console.log('Component did update');
+    }, [count]);
+
     return (
         <div className="index">
             this is index page,

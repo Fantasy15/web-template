@@ -8,7 +8,6 @@
 const Main = () => useLocalStore(() => ({
     count: 1,
     plusCount() {
-        console.log(this);
         this.count ++;
     }
 }))
